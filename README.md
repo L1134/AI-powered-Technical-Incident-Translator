@@ -48,7 +48,7 @@ Router interface down after configuration change. Packet loss observed.
 
 <p align="center">
   <img src="assets/ui-output.png" width="650">
-</p> 
+</p>  
 
 
 > **Mapped Operational Domain**:  
