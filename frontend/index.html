@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Technical Incident Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: #020617;
+            padding: 30px;
+            border-radius: 12px;
+            width: 500px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            resize: none;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background: #38bdf8;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #020617;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+
+        .label {
+            color: #7dd3fc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Incident Translator</h1>
+
+    <textarea id="incident"placeholder="Paste technical incident here..."></textarea>
+
+    <button onclick="sendIncident()">Analyze Incident</button>
+
+    <div class="result" id="result" style="display:none;">
+        <p><span class="label">Translated:</span> <span id="translated"></span></p>
+        <p><span class="label">Severity:</span> <span id="severity"></span></p>
+        <p><span class="label">Category:</span> <span id="category"></span></p>
+        <p><span class="label">Suggested Action:</span> <span id="action"></span></p>
+    </div>
+</div>
+
+<script>
+async function sendIncident() {
+    const text = document.getElementById("incident").value;
+
+    const response = await fetch("http://127.0.0.1:8000/translate", {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({text: text})
+    });
+
+    const data = await response.json();
+
+    document.getElementById("translated").innerText = data.translated_text ||data.translation||"";
+    document.getElementById("severity").innerText = data.severity ||"N/A";
+    document.getElementById("category").innerText = data.category ||"N/A";
+    document.getElementById("action").innerText = data.suggested_action ||"N/A";
+
+    document.getElementById("result").style.display ="block";
+}
+</script>
+
+</body>
+</html>

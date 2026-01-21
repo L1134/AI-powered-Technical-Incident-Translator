@@ -1,31 +1,59 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-import os
+from fastapi.middleware.cors import CORSMiddleware
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+import json
 
-app = FastAPI(title="AI Technical Incident Translator")
+load_dotenv()
 
-# Modelo de entrada
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+model = genai.GenerativeModel("gemini-pro")
+
 class IncidentRequest(BaseModel):
     text: str
-
-# Inicializa Gemini (a chave virá depois via variável de ambiente)
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")
 
 @app.post("/translate")
 def translate_incident(request: IncidentRequest):
     prompt = f"""
-You are an expert telecom and IT engineer.
-Translate the following technical incident into simple language for non-technical managers:
+    You are an AI assistant specialized in Telecom NOC operations (ISP + Telco + Core).
+    
+    Analyze the following incident and respond ONLY in valid JSON with these fields:
 
-Incident:
-{request.text}
-"""
+    - translated_text: simplified execution-level English
+    - severity: High | Medium | Low
+    - category: e.g. BGP, Access, RF, Fiber, Routing, Transport, Core, OSS, Power,...
+    - layer: OSI layer (L1-L7)
+    - suggested_action: short technical action
+    - noc_domain: Access | Aggregation | Core | Edge | Datacenter
+    
+    INCIDENT:
+    "{request.text}"
+    """
 
     response = model.generate_content(prompt)
 
-    return {
-        "original": request.text,
-        "translated": response.text
-    }
+    try:
+        data = json.loads(response.text)
+    except:
+        # fallback if model returns fenced code block etc
+        cleaned = response.text.replace("```json", "").replace("```", "")
+        data = json.loads(cleaned)
+
+    return data
+
+
+
+
