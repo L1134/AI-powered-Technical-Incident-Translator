@@ -46,9 +46,8 @@ Router interface down after configuration change. Packet loss observed.
 
 > **System Output**
 
-<p align="center">
-<img width="552" alt="NOC AI Output" src="https://github.com/user-attachments/assets/a8171bab-aa9b-4a54-9206-f695077f8f89" />
-</p>
+Update README image path to assets/
+
 
 > **Mapped Operational Domain**:  
 ✔ Infrastructure & Transport Layer
