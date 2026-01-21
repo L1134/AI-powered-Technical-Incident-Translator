@@ -48,7 +48,7 @@ Router interface down after configuration change. Packet loss observed.
 
 Update README image path to assets/
 
-assets/ui-output.png
+Update README image path to assets/
 
 
 
