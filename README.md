@@ -44,13 +44,14 @@ This prototype demonstrates how AI can **reduce triage time**, improve operation
 Router interface down after configuration change. Packet loss observed.
 
 
-> **System Output**
 
-System Output
 
-Update README image path to assets/
+### 🖥 System Output
 
-assets/ui-output.png
+<p align="center">
+  <img src="assets/ui-output.png" width="550">
+</p>
+
 
 
 
