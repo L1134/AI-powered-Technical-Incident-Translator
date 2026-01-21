@@ -4,7 +4,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
 ![Frontend](https://img.shields.io/badge/Frontend-HTML%2FJS-blueviolet)
 ![AI](https://img.shields.io/badge/AI-Inference-yellow)
-![Domain](https://img.shields.io/badge/Domain-Telecom%2FNOC-orange)
+![Domain](https://img.shields.io/badge/Domain-Telecom%2FNOC-orange) 
 ![Status](https://img.shields.io/badge/Status-Prototype-green)
 
 > AI-powered incident triage system designed for NOC environments in telecom and ISP operations.
