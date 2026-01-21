@@ -48,8 +48,6 @@ Router interface down after configuration change. Packet loss observed.
 
 Update README image path to assets/
 
-Update README image path to assets/
-
 
 
 > **Mapped Operational Domain**:  
