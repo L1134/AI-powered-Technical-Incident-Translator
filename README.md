@@ -48,6 +48,9 @@ Router interface down after configuration change. Packet loss observed.
 
 Update README image path to assets/
 
+assets/ui-output.png
+
+
 
 > **Mapped Operational Domain**:  
 ✔ Infrastructure & Transport Layer
