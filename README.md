@@ -42,6 +42,11 @@ The tool is designed for:
 - Datacenter & Hosting environments
 - Field operations & Dispatch centers
 
+Reduce cognitive load and reaction time in operational environments by transforming raw technical incident descriptions into structured insights that support NOC decisions. 
+
+
+<img width="638" height="274" alt="image" src="https://github.com/user-attachments/assets/2172fd23-09e5-4ce6-995c-8c6768e95260" />
+
 ---
 
 ## 🧠 **Why this Matters**
@@ -68,8 +73,6 @@ AI can **translate**, **structure** and **reduce interpretation time**, improvin
 > Early UI concept for triage operators
 
 ![Preview](assets/ui-output.png)
-<img width="638" height="288" alt="image" src="https://github.com/user-attachments/assets/14b91ec8-9039-4303-b69f-8ca005a6a873" />
-
 ---
 
 ## 🚀 **Project Stage**
